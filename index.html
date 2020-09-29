@@ -102,6 +102,7 @@
            
             updatedBalance("currentBalance", depositNumber);
             updatedBalance("currentDeposit", depositNumber);
+            
         })
 
         //withdraw button event handler 
@@ -112,16 +113,21 @@
                 // const withdrawNumber = parseFloat(withdrawAmount);
 
                 const withdrawNumber = getInputNumber("withdrawAmount");
-
+                updatedBalance("currentWithdraw", withdrawNumber);
+                updatedBalance("currentBalance", -1 * withdrawNumber);
+                document.getElementById("withdrawAmount").value = "";  
             })
+
         
         function getInputNumber(id){
             const Amount = document.getElementById(id).value;
             const amountNumber = parseFloat(Amount);
             return amountNumber;
         }
+
+
  
-//getting the balance
+           //getting the balance
             function updatedBalance(id, depositNumber){
 
             const current = document.getElementById(id).innerText;
@@ -129,7 +135,7 @@
             const total = currentNumber + depositNumber;
             document.getElementById(id).innerText = total;
 
-        }
+            }
 
     </script>
 </body>
